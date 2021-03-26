@@ -13,8 +13,8 @@ RUN git clone https://github.com/tercen/SAUCIE_python_operator
 
 WORKDIR /operator/SAUCIE_python_operator
 
-RUN echo 0.0.1 && git pull
-RUN git checkout 0.0.1
+RUN echo 0.0.3 && git pull
+RUN git checkout 0.0.3
 
 RUN R --vanilla -e "renv::restore(confirm=FALSE)"
 
