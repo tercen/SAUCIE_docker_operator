@@ -4,7 +4,7 @@
   "tags": ["flow cytometry"],
   "authors": ["tercen"],
   "urls": ["https://github.com/tercen/SAUCIE_docker_operator"],
-  "container": "agouy/saucie_docker_operator:0.0.1",
+  "container": "agouy/saucie_docker_operator:0.0.3",
   "isWebApp": false
 }
 
