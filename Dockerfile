@@ -5,7 +5,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update && apt-get install -y openssl libssl-dev rustc r-base git
 
-RUN R -e "install.packages('renv')"
+RUN R -e "install.packages(c('renv', 'dplyr'))"
 
 WORKDIR /operator
 
