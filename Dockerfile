@@ -25,11 +25,11 @@ RUN R -e "install.packages(c('renv'))"
 
 WORKDIR /operator
 
-ADD . SAUCIE_python_operator
+ADD . saucie
 
-WORKDIR /operator/SAUCIE_python_operator
+WORKDIR /operator/saucie
 
-RUN R --vanilla -e "renv::restore(confirm=FALSE)"
+RUN R -e "renv::restore(confirm=FALSE)"
 
 ENV TERCEN_SERVICE_URI https://tercen.com
 

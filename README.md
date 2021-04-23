@@ -11,8 +11,8 @@ This operator leverages Python to perform a median computation. It can be used a
 ### renv
 
 ```
-VERSION=0.0.4
-docker build -t agouy/saucie:$VERSION .
-docker push agouy/saucie:$VERSION
+VERSION=0.0.9
+docker build -t tercen/saucie:$VERSION .
+docker push tercen/saucie:$VERSION
 git add -A && git commit -m "$VERSION" && git tag  $VERSION  && git push && git push --tags
 ```
