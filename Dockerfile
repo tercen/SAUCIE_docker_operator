@@ -29,6 +29,7 @@ ADD . saucie
 
 WORKDIR /operator/saucie
 
+RUN R -e "renv::consent(provided=TRUE)"
 RUN R -e "renv::restore(confirm=FALSE)"
 
 ENV TERCEN_SERVICE_URI https://tercen.com

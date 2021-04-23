@@ -2,17 +2,17 @@
 
 ### Decription
 
-This operator leverages Python to perform a median computation. It can be used as a skeleton to develop Pathon operators in Tercen.
+SAUCIE operator.
 
-### install python dependencies
-
-`py_install("pandas")`
-
-### renv
+### Docker image
 
 ```
-VERSION=0.0.9
+VERSION=0.0.11
 docker build -t tercen/saucie:$VERSION .
 docker push tercen/saucie:$VERSION
-git add -A && git commit -m "$VERSION" && git tag  $VERSION  && git push && git push --tags
+git add -A
+git commit -m "$VERSION"
+git tag  $VERSION
+git push
+git push --tags
 ```
