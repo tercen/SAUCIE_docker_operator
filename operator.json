@@ -1,11 +1,9 @@
 {
   "name": "SAUCIE",
-  "description": "SAUCIE",
+  "description": "Run the SAUCIE algorithm",
   "tags": ["flow cytometry"],
   "authors": ["tercen"],
-  "urls": ["https://github.com/tercen/SAUCIE_docker_operator"],
-  "container": "agouy/saucie_docker_operator:0.0.4",
-  "isWebApp": false
+  "urls": ["https://github.com/tercen/SAUCIE_python_operator"]
 }
 
 

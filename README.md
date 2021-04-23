@@ -1,10 +1,18 @@
-# SAUCIE Docker Operator
+# SAUCIE docker operator
 
-* Build the image
+### Decription
 
-```bash
-VERSION=0.0.3
-docker build -t agouy/saucie_docker_operator:$VERSION .
-docker push agouy/saucie_docker_operator:$VERSION
+This operator leverages Python to perform a median computation. It can be used as a skeleton to develop Pathon operators in Tercen.
+
+### install python dependencies
+
+`py_install("pandas")`
+
+### renv
+
+```
+VERSION=0.0.4
+docker build -t agouy/saucie:$VERSION .
+docker push agouy/saucie:$VERSION
 git add -A && git commit -m "$VERSION" && git tag  $VERSION  && git push && git push --tags
 ```
