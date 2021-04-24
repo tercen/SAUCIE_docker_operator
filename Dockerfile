@@ -21,12 +21,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   r-recommended=${R_BASE_VERSION}-* \
   git
 
+RUN pip install pandas
+RUN pip install sklearn
 RUN R -e "install.packages(c('renv'))"
 
 WORKDIR /operator
-
 ADD . saucie
-
 WORKDIR /operator/saucie
 
 RUN R -e "renv::consent(provided=TRUE)"
