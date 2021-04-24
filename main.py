@@ -8,9 +8,8 @@ sys.path.append("SAUCIE")
 import SAUCIE
 
 filename = sys.argv[1]
-print(filename)
 out_filename = sys.argv[2]
-tf.reset_default_graph()
+#tf.reset_default_graph()
 
 # get input file as np array
 data = np.loadtxt(filename)
