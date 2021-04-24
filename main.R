@@ -15,11 +15,10 @@ do.saucie = function(data) {
   write.filename = file(filename, "wb")
   writeBin(as.vector(data), write.filename, size=4)
   close(write.filename)
-  cmd = paste('python3 main.py',
-               filename,
-               out.filename,
+  cmd = paste('python3',
                sep = ' ')
-  args = paste(filename,
+  args = paste('main.py',
+  		filename,
                out.filename,
                sep = ' ')
   system2(cmd, args)
