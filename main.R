@@ -23,7 +23,8 @@ do.saucie = function(data) {
   return(saucie.data)
 }
 
-(ctx = tercenCtx())  %>% 
+ctx = tercenCtx()
+ctx  %>% 
   as.matrix(fill=0) %>% 
   do.saucie() %>%
   as.data.frame() %>% 
