@@ -12,17 +12,17 @@ do.saucie = function(data) {
       file.remove(out.filename);
     }
   })
-  write.filename = file(filename, "wb")
-  writeBin(as.vector(data), write.filename, size=4)
+  write.filename = file(filename, "wt")
+  write.table(data,col.names = FALSE, row.names = FALSE, quote = FALSE, write.filename)
   close(write.filename)
   cmd = paste('python3',
-               sep = ' ')
+              sep = ' ')
   args = paste('main.py',
-  		filename,
+               filename,
                out.filename,
                sep = ' ')
   system2(cmd, args)
-  read.filename = file(out.filename, "rb")
+  read.filename = file(out.filename, "rt")
   saucie.data = readBin(read.filename, double(), size=4, n = 2*ncol(data))
   close(read.filename)
   saucie.matrix = matrix(saucie.data, nrow = ncol(data), ncol = 3, byrow = TRUE)
@@ -31,7 +31,7 @@ do.saucie = function(data) {
 }
 
 ctx = tercenCtx()
-ctx  %>% 
+df <- ctx  %>% 
   as.matrix(fill=0) %>% 
   do.saucie() %>%
   as.data.frame() %>% 
