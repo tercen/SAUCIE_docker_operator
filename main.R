@@ -23,10 +23,10 @@ do.saucie = function(data) {
                sep = ' ')
   system2(cmd, args)
   read.filename = file(out.filename, "rt")
-  saucie.data = readBin(read.filename, double(), size=4, n = 2*ncol(data))
+  saucie.data = read.table(read.filename)
   close(read.filename)
-  saucie.matrix = matrix(saucie.data, nrow = ncol(data), ncol = 3, byrow = TRUE)
-  colnames(saucie.matrix) = c('SAUCIE1', 'SAUCIE2', "cluster")
+  #saucie.matrix = matrix(saucie.data, nrow = ncol(data), ncol = 3, byrow = TRUE)
+  colnames(saucie.data) = c('SAUCIE1', 'SAUCIE2', "cluster")
   return(saucie.data)
 }
 
