@@ -32,7 +32,8 @@ do.saucie = function(data) {
 
 ctx = tercenCtx()
 df <- ctx  %>% 
-  as.matrix(fill=0) %>% 
+  as.matrix(fill = 0) %>% 
+  t() %>%
   do.saucie() %>%
   as.data.frame() %>% 
   mutate(.ci = seq_len(nrow(.)) - 1) %>%
