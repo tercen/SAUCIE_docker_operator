@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:1.4.0
+FROM tensorflow/tensorflow:2.4.1
 
 ENV R_BASE_VERSION 4.0.4
 ENV TZ Europe/Paris5
@@ -7,13 +7,12 @@ ENV TERM linux
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt-get update && apt-get install apt-transport-https ca-certificates
 RUN apt-get update && apt-get install -y --no-install-recommends software-properties-common dirmngr
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-RUN add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran40/'
+RUN add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/'
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-  openssl  \
+  openssl \
   libssl-dev \
   rustc \
   cargo \
@@ -24,6 +23,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN pip install pandas
 RUN pip install sklearn
+RUN pip install tensorflow==1.4
 RUN R -e "install.packages(c('renv'))"
 
 WORKDIR /operator

@@ -4,6 +4,10 @@ import tensorflow as tf
 import sys
 import sklearn
 
+# from sklearn import datasets
+# iris = datasets.load_iris()
+# data = iris.data[:, :2] 
+
 sys.path.append("SAUCIE")
 import SAUCIE
 
