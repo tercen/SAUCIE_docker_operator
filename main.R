@@ -15,7 +15,7 @@ do.saucie = function(data) {
   write.filename = file(filename, "wt")
   write.table(data,col.names = FALSE, row.names = FALSE, quote = FALSE, write.filename)
   close(write.filename)
-  cmd = paste('python3',
+  cmd = paste('python',
               sep = ' ')
   args = paste('main.py',
                filename,
