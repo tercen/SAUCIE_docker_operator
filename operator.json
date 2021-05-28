@@ -4,8 +4,28 @@
   "tags": ["flow cytometry"],
   "authors": ["tercen"],
   "urls": ["https://github.com/tercen/SAUCIE_docker_operator"],
-  "container": "tercen/saucie:0.1.2",
-  "isWebApp": false
+  "container": "tercen/saucie:0.1.3",
+  "isWebApp": false,
+  "properties": [
+    {
+    "kind": "DoubleProperty",
+    "name": "lambda_b",
+    "defaultValue": 0,
+    "description": "lambda_b parameter for batch correction"
+    },
+    {
+    "kind": "DoubleProperty",
+    "name": "lambda_c",
+    "defaultValue": 0,
+    "description": "lambda_c parameter for clustering, ID regularization coefficient"
+    },
+    {
+    "kind": "DoubleProperty",
+    "name": "lambda_d",
+    "defaultValue": 0,
+    "description": "lambda_d parameter for clustering, intra-cluster distance coefficient"
+    }
+  ]
 }
 
 

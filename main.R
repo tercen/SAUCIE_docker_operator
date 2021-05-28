@@ -1,7 +1,7 @@
 library(dplyr)
 library(tercen)
 
-do.saucie = function(data) {
+do.saucie = function(data, lambda_b, lambda_c, lambda_d) {
   filename = tempfile()
   out.filename = tempfile()
   on.exit({
@@ -20,21 +20,41 @@ do.saucie = function(data) {
   args = paste('main.py',
                filename,
                out.filename,
+               lambda_b,
+               lambda_c,
+               lambda_d,
                sep = ' ')
   system2(cmd, args)
   read.filename = file(out.filename, "rt")
   saucie.data = read.table(read.filename)
   close(read.filename)
-  #saucie.matrix = matrix(saucie.data, nrow = ncol(data), ncol = 3, byrow = TRUE)
-  colnames(saucie.data) = c('SAUCIE1', 'SAUCIE2', "cluster")
+  colnames(saucie.data) = c('SAUCIE1', 'SAUCIE2', "cluster_id")
+  saucie.data$cluster_id <- as.character(saucie.data$cluster_id)
   return(saucie.data)
 }
 
 ctx = tercenCtx()
+
+lambda_b <- ifelse(
+  is.null(ctx$op.value("lambda_b")),
+  0.0,
+  as.numeric(ctx$op.value("lambda_b"))
+)
+lambda_c <- ifelse(
+  is.null(ctx$op.value("lambda_c")),
+  0.0,
+  as.numeric(ctx$op.value("lambda_c"))
+)
+lambda_d <- ifelse(
+  is.null(ctx$op.value("lambda_d")),
+  0.0,
+  as.numeric(ctx$op.value("lambda_d"))
+)
+
 df <- ctx  %>% 
   as.matrix(fill = 0) %>% 
   t() %>%
-  do.saucie() %>%
+  do.saucie(., lambda_b, lambda_c, lambda_d) %>%
   as.data.frame() %>% 
   mutate(.ci = seq_len(nrow(.)) - 1) %>%
   ctx$addNamespace() %>%
